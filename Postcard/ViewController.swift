@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func sendButtonPressed(sender: UIButton) {
-        messageLabel.hidden = false;
+        messageLabel.hidden = false
+        nameLabel.hidden = false
         var height: Int = 10
         for (var i: Int = 1; i<height; i++) {
             textView.text = textView.text +   "|"+spaces(i,rows: height) + multiplyString(String(i), count: i) + spaces(i,rows: height) + "| \n"
@@ -34,7 +36,13 @@ class ViewController: UIViewController {
             
         }
         messageTextField.resignFirstResponder()
-      messageLabel.text = messageTextField.text
+        nameTextField.resignFirstResponder()
+        messageLabel.text = messageTextField.text
+        nameLabel.text = nameTextField.text
+        
+        nameTextField.text = ""
+        messageTextField.text = ""
+        
         
         messageLabel.textColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
         
